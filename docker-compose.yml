@@ -1,0 +1,21 @@
+version: '3'
+services:
+    db:
+        image: postgres:12.0-alpine
+        tty: true
+        ports:
+            - "5432:5432"
+        volumes:
+            - ../postgres/init:/docker-entrypoint-initdb.d
+        environment:
+            POSTGRES_PASSWORD: sample
+
+    py:
+        build:
+            context: py
+        tty: true
+        volumes:
+            - ./py:/src
+        links:
+            - "db"
+
