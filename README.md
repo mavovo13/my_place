@@ -5,7 +5,7 @@ my_place
 https://udc-kyoto.connpass.com/event/152528/
 
 # setup
-T.B.W.
+run `docker-compose up -d --build`
 
 # test
 T.B.W.
@@ -43,3 +43,36 @@ docker-compose exec py /bin/ash
 docker-compose stop
 docker-compose rm
 ```
+
+# postgresの簡単な使い方
+## postgresのコンテナにログインする
+コンテナログイン
+
+```
+docker-compose exec db /bin/ash
+```
+
+postgresではユーザごとにデータベースができるっぽい。
+ログインした直後はrootだが、これをpostgresというユーザに切り替える
+
+```
+su postgres
+```
+
+この状態でpostgresのクライアントを起動する
+
+```
+psql
+```
+
+## テーブルの一覧を取得する
+
+postgresのクライアントを起動した状態で以下を実行する
+
+```
+¥d
+```
+
+## 何らかのクエリを実行する
+
+postgresのクライアントを起動した状態で、クエリを打って、最後に;をつけて実行する

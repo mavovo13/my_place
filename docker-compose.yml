@@ -6,16 +6,18 @@ services:
         ports:
             - "5432:5432"
         volumes:
-            - ../postgres/init:/docker-entrypoint-initdb.d
+            - ./postgres/init:/docker-entrypoint-initdb.d
         environment:
-            POSTGRES_PASSWORD: sample
+            - POSTGRES_USER=test01
+            - POSTGRES_PASSWORD=test01
+            - POSTGRES_DB=test01
 
     py:
         build:
-            context: py
+            context: python
         tty: true
         volumes:
-            - ./py:/src
+            - ./python:/src
         links:
             - "db"
 
