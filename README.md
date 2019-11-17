@@ -7,6 +7,10 @@ https://udc-kyoto.connpass.com/event/152528/
 # setup
 run `docker-compose up -d --build`
 
+## Front
+build `ng build`
+launch `ng serve --host=0.0.0.0`でホスト端末から`http://localhost:4200`で接続できます。
+
 # test
 T.B.W.
 
