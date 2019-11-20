@@ -1,0 +1,17 @@
+<p>detail-search works!</p>
+
+<form [formGroup]=profileForm (ngSubmit)=onSubmit()>
+    <label>
+        Name:
+        <input type="text" formControlName="firstName">
+    </label>
+    <p>
+        Value: {{profileForm.value.firstName}}
+    </p>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
+<p>
+    Value: {{profileForm.value.firstName}}
+</p>
+
+<button label='button' (click)=onclick()></button>

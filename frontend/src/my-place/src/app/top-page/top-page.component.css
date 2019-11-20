@@ -1,0 +1,18 @@
+.example-card {
+    float: left;
+    max-width: 400px;
+    margin: 30px;
+  }
+  
+ .btn02 {
+    background-color: #3169d1;
+    color: #fff !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+.btn02:hover {
+    background-color: #998bfa;
+}
