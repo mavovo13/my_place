@@ -1,4 +1,14 @@
 my_place
+# ブランチ戦略
+develop/master はmasterブランチを元に作成しています。
+develop/master はしかるべきタイミングでmasterブランチにマージします。
+issue対応時にはdevelop/masterからブランチを作成してください。
+issueブランチの命名規則は下記を参考にしてください。
+
+e.g.)
+master
+└develop/master
+ └issue_{issue_id}
 ---
 
 アーバンデータチャレンジ京都のハッカソンのためのリポジトリです。
