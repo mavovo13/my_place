@@ -12,8 +12,5 @@ export class TopPageComponent implements OnInit {
 
   ngOnInit() {
   }
-  onclick(): void{
-    this.router.navigate(["/map-search"]);
-  }
 
 }
