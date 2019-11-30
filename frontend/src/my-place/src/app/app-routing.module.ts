@@ -4,6 +4,7 @@ import { TopPageComponent } from './top-page/top-page.component';
 import { MapSearchComponent } from './map-search/map-search.component';
 import { GeoSearchComponent } from './geo-search/geo-search.component';
 import { FavoriteSearchComponent } from './favorite-search/favorite-search.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'map-search', component: MapSearchComponent },
   { path: 'geo-search', component: GeoSearchComponent },
   { path: 'favorite-search', component: FavoriteSearchComponent },
+  { path: 'search-result/:address', component: SearchResultComponent },
 ];
 
 @NgModule({
