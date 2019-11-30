@@ -21,7 +21,18 @@
 
 .icon{
     margin: 3em;
+    width: 271px;
+    height: 271px;   
+    text-align: center;
 }
 .icon:hover{
     cursor: pointer;
+}
+
+.mat-card-title{
+    text-align: center;
+}
+
+.icon-image{
+    width: 60%;
 }
