@@ -1,16 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Sacramento');
 
 .menuicon{
     display: flex;
     justify-content: center;
-}
-
-.title {
-    text-align: center;
-    font-size: 7em;
-    padding-top: 40px;
-    font-family: 'Sacramento', cursive;
-    font-weight: bold;
 }
 
 .subtitle {

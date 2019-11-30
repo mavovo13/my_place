@@ -1,0 +1,13 @@
+<div class="address">
+    京都府　{{myPlace.displayAddress}}
+</div>
+
+<div class="point"> 
+    <div class="total-point"> 
+        <p> My Place ポイント {{myPlace.totalPoint}}</p> 
+    </div>
+    <div class="points"> 
+        <p *ngFor="let p of myPlace.points"> {{p.name}} : {{p.point}}</p>
+    </div> 
+</div>
+

@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+
+.title {
+    text-align: center;
+    font-size: 7em;
+    padding-top: 40px;
+    font-family: 'Sacramento', cursive;
+    font-weight: bold;
+}
+
+.contents{
+    padding-left: 1em;
+}
