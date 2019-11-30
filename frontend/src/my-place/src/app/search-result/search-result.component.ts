@@ -1,30 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+export class Point{
+  name: string;
+  point: number;
+}
+
 export class MyPlace {
   address: string;
   displayAddress: string;
-  totalPoint: number;
-  point1: number; //fix me
-  point2: number; //fix me
-  point3: number; //fix me
+  points: Point[];
+
+  get totalPoint(): number{
+    return this.points
+      .map(p=>p.point)
+      .reduce((accumulator, currentValue) => accumulator + currentValue);
+  }
 
   static create(address: string): MyPlace{
-    return {
-      address: address,
-      displayAddress: "京都市",
-      totalPoint: 0,
-      point1: 0,
-      point2: 0,
-      point3: 0
-    }
+    const ps:Point[]= [{name:"hoge", point:1}, {name:"piyo", point:10}]
+
+    const mp = new MyPlace();
+    mp.address = address;
+    mp.displayAddress = "京都市";
+    mp.points = ps;
+
+    return mp
   }
+
 }
 
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
-  styleUrls: ['./search-result.component.scss']
+  styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent implements OnInit {
   myPlace: MyPlace;
