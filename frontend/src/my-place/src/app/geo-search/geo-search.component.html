@@ -1,1 +1,11 @@
-<p>detail-search works!</p>
+<mat-form-field>
+  <mat-label>場所を選択してください。</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let address of addresses" [value]="address.value">
+      {{address.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-icon-button aria-label="Example icon-button with a heart icon">
+    <mat-icon>search</mat-icon>
+</button>
