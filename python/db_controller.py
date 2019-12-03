@@ -24,3 +24,22 @@ def getAddressBy(post_code):
       return None
     else:
       return {"post_code": row[0], "display_name": row[1]}
+
+def getAddressWithPointBy(post_code):
+  with get_connection() as conn:
+    with conn.cursor() as cur:
+      q = """SELECT a.post_code, a.display_name, rp.display_name, rp.point FROM address as a
+              inner join
+                (SELECT * FROM my_place_point_address_relation as r
+                  left join my_place_point as p
+                    on r.my_place_point_id = p.id)
+                as rp
+              on a.post_code = rp.post_code
+              where a.post_code='{}';""".format(post_code)
+      cur.execute(q)
+      rows = cur.fetchall()
+      print(rows)
+    if rows == None:
+      return None
+    else:
+      return [{"post_code":_[0], "display_name":_[1], "my_place_point_name":_[2], "point":_[3]} for _ in rows]

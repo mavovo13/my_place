@@ -24,6 +24,20 @@ def address(post_code=None):
   else: # POST
     return f'posted'
 
+@app.route('/address/<post_code>/detail', methods=['GET', 'POST'])
+def address_detail(post_code=None):
+  if request.method == 'GET':
+    if post_code == None:
+      return abort(404)
+    else:
+      retval = db.getAddressWithPointBy(post_code)
+      if retval == None:
+        return abort(404, {"post_code": post_code})
+      else:
+        return {"addresses": retval} 
+  else: # POST
+    return f'posted'
+
 @app.errorhandler(404)
 def page_not_found(error):
     return "there is no content"
