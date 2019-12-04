@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SearchResultService } from './search-result.service';
 
 export class Point{
   name: string;
@@ -37,14 +38,15 @@ export class MyPlace {
 })
 export class SearchResultComponent implements OnInit {
   myPlace: MyPlace;
-  constructor( private route: ActivatedRoute,) { }
+  constructor( private route: ActivatedRoute, private service: SearchResultService) { }
 
   ngOnInit() {
     this.myPlace = MyPlace.create(this.getAddress())
-    console.log(this.myPlace)
+    this.service.getAddress().subscribe(x=>console.log(x)) //API確認用
   }
   getAddress(): string {
     return this.route.snapshot.paramMap.get('address');
   }
 
 }
+
