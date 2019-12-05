@@ -1,7 +1,9 @@
 from flask import Flask, escape, request, abort
+from flask_cors import CORS
 import db_controller as db
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def hello():
