@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Addresses } from './model';
+import { Address } from '../model/address-model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class SearchResultService {
 
   constructor(private http: HttpClient,) { }
 
-  getAddress(): Observable<Addresses>{
-    return this.http.get<Addresses>('http://localhost:5000/address')
+  getAddress(): Observable<Address[]>{
+    return this.http.get<Address[]>('http://localhost:5000/address')
   }
 }

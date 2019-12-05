@@ -3,6 +3,6 @@ export class Address{
     post_code: string
 }
 
-export class Addresses {
+export class Addresses{
     addresses: Address[]
 }
