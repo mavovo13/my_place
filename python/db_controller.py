@@ -38,8 +38,12 @@ def getAddressWithPointBy(post_code):
               where a.post_code='{}';""".format(post_code)
       cur.execute(q)
       rows = cur.fetchall()
-      print(rows)
+
     if rows == None:
       return None
     else:
-      return [{"post_code":_[0], "display_name":_[1], "my_place_point_name":_[2], "point":_[3]} for _ in rows]
+      post_code = post_code
+      display_name = rows[0][1]
+      points = [{"name":_[2], "point":_[3]} for _ in rows]
+      
+      return {"post_code": post_code, "display_name": display_name, "points": points}

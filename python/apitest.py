@@ -36,7 +36,7 @@ def address_detail(post_code=None):
       if retval == None:
         return abort(404, {"post_code": post_code})
       else:
-        return {"addresses": retval} 
+        return retval
   else: # POST
     return f'posted'
 

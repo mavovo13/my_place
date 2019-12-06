@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchResultService } from './search-result.service';
+import { Address } from '../model/address-model';
 
 export class Point{
   name: string;
@@ -8,9 +9,13 @@ export class Point{
 }
 
 export class MyPlace {
-  address: string;
-  displayAddress: string;
+  address: Address;
   points: Point[];
+
+  private constructor(address: Address, points:Point[]){
+    this.address = address;
+    this.points = points;
+  }
 
   get totalPoint(): number{
     return this.points
@@ -18,15 +23,8 @@ export class MyPlace {
       .reduce((accumulator, currentValue) => accumulator + currentValue);
   }
 
-  static create(address: string): MyPlace{
-    const ps:Point[]= [{name:"hoge", point:1}, {name:"piyo", point:10}]
-
-    const mp = new MyPlace();
-    mp.address = address;
-    mp.displayAddress = "京都市";
-    mp.points = ps;
-
-    return mp
+  static create(address: Address, points: Point[]): MyPlace{
+    return new MyPlace(address, points);
   }
 
 }
@@ -41,11 +39,18 @@ export class SearchResultComponent implements OnInit {
   constructor( private route: ActivatedRoute, private service: SearchResultService) { }
 
   ngOnInit() {
-    this.myPlace = MyPlace.create(this.getAddress())
-    this.service.getAddress().subscribe(x=>console.log(x)) //API確認用
+    const post_code:string = this.getPostCode();
+    this.myPlace = MyPlace.create({post_code: "", display_name:""}, [{name:"", point:0}]);
+    
+    this.service.getMyPlace(post_code).subscribe( mp =>{
+      const address: Address = {post_code: mp.post_code, display_name: mp.display_name};
+      const points: Point[] = mp.points;
+
+      this.myPlace = MyPlace.create(address, points);
+    });
   }
-  getAddress(): string {
-    return this.route.snapshot.paramMap.get('address');
+  getPostCode(): string {
+    return this.route.snapshot.paramMap.get('post_code');
   }
 
 }
