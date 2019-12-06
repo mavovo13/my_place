@@ -2,32 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchResultService } from './search-result.service';
 import { Address } from '../model/address-model';
-
-export class Point{
-  name: string;
-  point: number;
-}
-
-export class MyPlace {
-  address: Address;
-  points: Point[];
-
-  private constructor(address: Address, points:Point[]){
-    this.address = address;
-    this.points = points;
-  }
-
-  get totalPoint(): number{
-    return this.points
-      .map(p=>p.point)
-      .reduce((accumulator, currentValue) => accumulator + currentValue);
-  }
-
-  static create(address: Address, points: Point[]): MyPlace{
-    return new MyPlace(address, points);
-  }
-
-}
+import { MyPlace, MyPlacerPoint } from '../model/myplace-model';
 
 @Component({
   selector: 'app-search-result',
@@ -43,12 +18,16 @@ export class SearchResultComponent implements OnInit {
     this.myPlace = MyPlace.create({post_code: "", display_name:""}, [{name:"", point:0}]);
     
     this.service.getMyPlace(post_code).subscribe( mp =>{
+      // APIとオブジェクトのマッピングはここで実装してください
       const address: Address = {post_code: mp.post_code, display_name: mp.display_name};
-      const points: Point[] = mp.points;
+      const points: MyPlacerPoint[] = mp.points;
 
       this.myPlace = MyPlace.create(address, points);
     });
   }
+
+  // urlの構造からpost_codeを取り出します。
+  // 詳細はroutingを参照してください。
   getPostCode(): string {
     return this.route.snapshot.paramMap.get('post_code');
   }

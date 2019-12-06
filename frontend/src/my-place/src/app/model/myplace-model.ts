@@ -1,10 +1,32 @@
-export class MyPlace{
-  display_name: string;
-  post_code: string;
-  points: Point[]
-}
+import {Address} from '../model/address-model';
 
-export class Point{
+// MyPlaceポイントのクラスです
+// MyPlaceの名前と得点を持ちます。
+export class MyPlacerPoint{
   name: string;
   point: number;
+}
+
+// MyPlaceクラスです。
+// 複数のMyPlacePointを持ちます
+export class MyPlace {
+  address: Address;
+  points: MyPlacerPoint[];
+
+  private constructor(address: Address, points:MyPlacerPoint[]){
+    this.address = address;
+    this.points = points;
+  }
+
+  // 持っているMyPlaceポイントの点数を全て足し合わせて総合得点を返します
+  get totalPoint(): number{
+    return this.points
+      .map(p=>p.point)
+      .reduce((accumulator, currentValue) => accumulator + currentValue);
+  }
+
+  static create(address: Address, points: MyPlacerPoint[]): MyPlace{
+    return new MyPlace(address, points);
+  }
+
 }
