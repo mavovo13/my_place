@@ -20,9 +20,11 @@ export class MyPlace {
 
   // 持っているMyPlaceポイントの点数を全て足し合わせて総合得点を返します
   get totalPoint(): number{
-    return this.points
+    if (this.points) {
+      return this.points
       .map(p=>p.point)
       .reduce((accumulator, currentValue) => accumulator + currentValue);
+    }
   }
 
   static create(address: Address, points: MyPlacerPoint[]): MyPlace{

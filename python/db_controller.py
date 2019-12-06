@@ -39,8 +39,8 @@ def getAddressWithPointBy(post_code):
       cur.execute(q)
       rows = cur.fetchall()
 
-    if rows == None:
-      return None
+    if rows == None or rows == []:
+      return {}
     else:
       post_code = post_code
       display_name = rows[0][1]

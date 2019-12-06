@@ -11,13 +11,14 @@ import { MyPlace, MyPlacerPoint } from '../model/myplace-model';
 })
 export class SearchResultComponent implements OnInit {
   myPlace: MyPlace;
+  post_code: string;
   constructor( private route: ActivatedRoute, private service: SearchResultService) { }
 
   ngOnInit() {
-    const post_code:string = this.getPostCode();
-    this.myPlace = MyPlace.create({post_code: "", display_name:""}, [{name:"", point:0}]);
+    this.post_code = this.getPostCode();
+    this.myPlace = MyPlace.create({post_code: "", display_name:""}, [{name:"", point:0},]);
     
-    this.service.getMyPlace(post_code).subscribe( mp =>{
+    this.service.getMyPlace(this.post_code).subscribe( mp =>{
       // APIとオブジェクトのマッピングはここで実装してください
       const address: Address = {post_code: mp.post_code, display_name: mp.display_name};
       const points: MyPlacerPoint[] = mp.points;
