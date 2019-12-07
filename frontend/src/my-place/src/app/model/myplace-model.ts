@@ -23,7 +23,7 @@ export class MyPlace {
     if (this.points) {
       return this.points
       .map(p=>p.point)
-      .reduce((accumulator, currentValue) => accumulator + currentValue);
+      .reduce((accumulator, currentValue) => accumulator + currentValue) / 4;
     }
   }
 
