@@ -6,6 +6,6 @@
     </mat-option>
   </mat-select>
 </mat-form-field>
-<button mat-icon-button (click)=onClick(selected) >
+<button mat-icon-button [disabled]="selected == ''" (click)=onClick(selected) >
     <mat-icon>search</mat-icon>
 </button>
