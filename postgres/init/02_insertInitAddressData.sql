@@ -5,7 +5,7 @@ insert into address (post_code, display_name) values
   ('601-0000','南区');
 
 insert into my_place_point (id, display_name) values
-  (1, 'これまでの洪水情報'),
+  (1, '災害危険度'),
   (2, '直近の犯罪発生情報'),
   (3, '交通量から見た騒音情報'),
   (4, '過去の地名からみた地盤情報');
