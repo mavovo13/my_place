@@ -1,8 +1,8 @@
 <mat-form-field>
   <mat-label>場所を選択してください。</mat-label>
   <mat-select [(value)]="selected">
-    <mat-option *ngFor="let address of addresses" [value]="address.value">
-      {{address.viewValue}}
+    <mat-option *ngFor="let address of addresses" [value]="address.post_code">
+      {{address.display_name}}
     </mat-option>
   </mat-select>
 </mat-form-field>

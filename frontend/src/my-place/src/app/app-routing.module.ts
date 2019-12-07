@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'map-search', component: MapSearchComponent },
   { path: 'geo-search', component: GeoSearchComponent },
   { path: 'favorite-search', component: FavoriteSearchComponent },
-  { path: 'search-result/:address', component: SearchResultComponent },
+  { path: 'search-result/:post_code', component: SearchResultComponent },
 ];
 
 @NgModule({
