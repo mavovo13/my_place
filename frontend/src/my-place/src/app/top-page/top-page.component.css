@@ -1,0 +1,29 @@
+
+.menuicon{
+    display: flex;
+    justify-content: center;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 3em;
+    margin: 15px;
+}
+
+.icon{
+    margin: 3em;
+    width: 271px;
+    text-align: center;
+    cursor: pointer;
+}
+.icon:hover{
+    cursor: pointer;
+}
+
+.mat-card-title{
+    text-align: center;
+}
+
+.icon-image{
+    width: 60%;
+}

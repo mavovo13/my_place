@@ -3,15 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TopPageModule } from './top-page/top-page.module';
+import { SearchResultModule } from './search-result/search-result.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    TopPageModule,
+    SearchResultModule
+ ],
   providers: [],
   bootstrap: [AppComponent]
 })

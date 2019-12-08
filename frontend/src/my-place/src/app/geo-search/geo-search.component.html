@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-label>場所を選択してください。</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option *ngFor="let address of addresses" [value]="address.post_code">
+      {{address.display_name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-icon-button [disabled]="selected == ''" (click)=onClick(selected) >
+    <mat-icon>search</mat-icon>
+</button>
